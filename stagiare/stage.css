@@ -1,0 +1,395 @@
+@import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap');
+
+:root {
+    --saas-bg: #F8FAFC;
+    --saas-surface: #FFFFFF;
+    --saas-border: #E2E8F0;
+    --saas-border-hover: #CBD5E1;
+    
+    /* Brand Palette */
+    --brand-primary: #6366F1;
+    --brand-primary-hover: #4F46E5;
+    --brand-primary-soft: #EEF2FF;
+    
+    /* Text Hierarchy */
+    --text-heading: #0F172A;
+    --text-body: #334155;
+    --text-muted: #64748B;
+    
+    /* Contextual Colors */
+    --color-todo: #64748B;
+    --color-todo-bg: #F1F5F9;
+    --color-doing: #2563EB;
+    --color-doing-bg: #EFF6FF;
+    --color-done: #059669;
+    --color-done-bg: #ECFDF5;
+    --color-warning: #D97706;
+    --color-warning-bg: #FFFBEB;
+
+    /* Shadow & Radius System */
+    --shadow-sm: 0 1px 2px 0 rgba(15, 23, 42, 0.05);
+    --shadow-md: 0 4px 6px -1px rgba(15, 23, 42, 0.05), 0 2px 4px -2px rgba(15, 23, 42, 0.05);
+    --shadow-lg: 0 10px 15px -3px rgba(15, 23, 42, 0.08), 0 4px 6px -4px rgba(15, 23, 42, 0.08);
+    --radius-lg: 16px;
+    --radius-md: 12px;
+    --radius-sm: 8px;
+    
+    --transition-smooth: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* Base Overrides */
+.saas-dashboard {
+    font-family: 'Plus Jakarta Sans', sans-serif;
+    background-color: var(--saas-bg);
+    color: var(--text-body);
+    padding: 32px;
+    display: flex;
+    flex-direction: column;
+    gap: 32px;
+    animation: fadeIn 0.4s ease-out;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(10px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+/* Layout Grid Architecture */
+.saas-layout-grid {
+    display: grid;
+    grid-template-columns: 1fr 380px;
+    gap: 32px;
+    align-items: start;
+}
+
+@media (max-width: 1200px) {
+    .saas-layout-grid { grid-template-columns: 1fr; }
+}
+
+/* Cards System */
+.saas-card {
+    background: var(--saas-surface);
+    border: 1px solid var(--saas-border);
+    border-radius: var(--radius-lg);
+    box-shadow: var(--shadow-sm);
+    padding: 24px;
+    transition: var(--transition-smooth);
+}
+.saas-card:hover { box-shadow: var(--shadow-md); }
+
+.saas-card-title {
+    font-size: 1.1rem;
+    font-weight: 700;
+    color: var(--text-heading);
+    letter-spacing: -0.02em;
+    margin-bottom: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 10px;
+}
+
+.title-text {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+/* Header Section */
+.saas-hero-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 1px solid var(--saas-border);
+    padding-bottom: 24px;
+    gap: 20px;
+}
+
+@media (max-width: 576px) {
+    .saas-hero-header { flex-direction: column; align-items: flex-start; }
+}
+
+.hero-identity h1 {
+    font-size: 1.75rem;
+    font-weight: 800;
+    color: var(--text-heading);
+    letter-spacing: -0.03em;
+}
+.hero-identity p { font-size: 0.95rem; color: var(--text-muted); margin-top: 4px; }
+
+/* Status Badges */
+.saas-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    padding: 6px 14px;
+    border-radius: 99px;
+    font-size: 0.75rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.03em;
+}
+.saas-badge-active { background: var(--color-doing-bg); color: var(--color-doing); border: 1px solid rgba(37, 99, 235, 0.15); }
+
+/* Buttons Framework */
+.btn-saas {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 10px 16px;
+    font-size: 0.875rem;
+    font-weight: 600;
+    border-radius: var(--radius-sm);
+    border: 1px solid var(--saas-border);
+    background: var(--saas-surface);
+    color: var(--text-heading);
+    cursor: pointer;
+    transition: var(--transition-smooth);
+}
+.btn-saas:hover { background: var(--saas-bg); border-color: var(--saas-border-hover); transform: translateY(-1px); }
+.btn-saas-primary { background: var(--brand-primary); color: #FFFFFF; border: none; }
+.btn-saas-primary:hover { background: var(--brand-primary-hover); color: #FFFFFF; box-shadow: 0 4px 12px rgba(99, 102, 241, 0.25); }
+.btn-saas-sm { padding: 6px 12px; font-size: 0.8rem; border-radius: 6px; }
+
+/* KPI Grid Component */
+.saas-kpi-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+    gap: 16px;
+}
+
+.saas-kpi-card {
+    background: var(--saas-bg);
+    border: 1px solid var(--saas-border);
+    border-radius: var(--radius-md);
+    padding: 18px;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    transition: var(--transition-smooth);
+}
+.saas-kpi-card:hover { transform: translateY(-2px); box-shadow: var(--shadow-sm); border-color: var(--brand-primary); }
+
+.kpi-header { display: flex; justify-content: space-between; align-items: center; }
+.kpi-icon {
+    width: 36px;
+    height: 36px;
+    border-radius: var(--radius-sm);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.1rem;
+    background: var(--saas-surface);
+    color: var(--text-muted);
+    border: 1px solid var(--saas-border);
+}
+.saas-kpi-card:hover .kpi-icon { background: var(--brand-primary-soft); color: var(--brand-primary); border-color: transparent; }
+
+.kpi-body h3 { font-size: 1.6rem; font-weight: 800; color: var(--text-heading); letter-spacing: -0.02em; margin: 0;}
+.kpi-body p { font-size: 0.75rem; color: var(--text-muted); font-weight: 600; text-transform: uppercase; letter-spacing: 0.02em; margin-top: 2px; margin-bottom: 0; }
+
+/* Premium Progress Component */
+.saas-progress-box {
+    display: flex;
+    align-items: center;
+    gap: 24px;
+    background: linear-gradient(135deg, #FAF9FF 0%, #F5F7FF 100%);
+    border: 1px solid rgba(99, 102, 241, 0.1);
+}
+
+@media (max-width: 576px) {
+    .saas-progress-box { flex-direction: column; text-align: center; }
+}
+
+.saas-circle-chart {
+    position: relative;
+    width: 80px;
+    height: 80px;
+    flex-shrink: 0;
+}
+.saas-circle-chart svg { transform: rotate(-90deg); width: 100%; height: 100%; }
+.circle-bg { fill: none; stroke: rgba(15, 23, 42, 0.06); stroke-width: 8; }
+.circle-fill { fill: none; stroke: var(--brand-primary); stroke-width: 8; stroke-linecap: round; transition: stroke-dashoffset 0.6s cubic-bezier(0.4, 0, 0.2, 1); }
+.circle-percentage {
+    position: absolute;
+    inset: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.15rem;
+    font-weight: 800;
+    color: var(--text-heading);
+}
+
+.progress-details { flex-grow: 1; display: flex; flex-direction: column; gap: 6px; width: 100%; }
+.progress-details h4 { font-size: 0.95rem; font-weight: 700; color: var(--text-heading); margin: 0; }
+.progress-details p { font-size: 0.85rem; color: var(--text-muted); margin: 0; }
+
+.saas-linear-bar { width: 100%; height: 8px; background: rgba(15, 23, 42, 0.05); border-radius: 99px; overflow: hidden; margin-top: 4px; }
+.saas-linear-fill { height: 100%; background: linear-gradient(90deg, var(--brand-primary) 0%, #818CF8 100%); border-radius: 99px; }
+
+/* Right Profile Panel / Dock */
+.info-dock-list { display: flex; flex-direction: column; gap: 20px; }
+.info-dock-item {
+    padding-bottom: 16px;
+    border-bottom: 1px solid var(--saas-border);
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+}
+.info-dock-item:last-child { border: none; padding: 0; }
+.info-dock-item label { font-size: 0.725rem; text-transform: uppercase; font-weight: 700; color: var(--text-muted); letter-spacing: 0.05em; display: flex; align-items: center; gap: 6px; margin: 0; }
+.info-dock-item p { font-size: 0.925rem; font-weight: 600; color: var(--text-heading); line-height: 1.5; margin: 0; }
+
+/* Roadmapping Section Timeline */
+.saas-vertical-timeline {
+    position: relative;
+    padding-left: 32px;
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+}
+.saas-vertical-timeline::before {
+    content: '';
+    position: absolute;
+    left: 11px; top: 8px; bottom: 8px;
+    width: 2px;
+    background: var(--saas-border);
+}
+
+.timeline-node { position: relative; }
+.timeline-marker {
+    position: absolute;
+    left: -32px; top: 10px;
+    width: 24px; height: 24px;
+    border-radius: 50%;
+    background: var(--saas-surface);
+    border: 2px solid var(--saas-border);
+    display: flex; align-items: center; justify-content: center;
+    font-size: 0.75rem; font-weight: 700; color: var(--text-muted);
+    transition: var(--transition-smooth);
+    z-index: 2;
+}
+.timeline-node:hover .timeline-marker { border-color: var(--brand-primary); color: var(--brand-primary); background: var(--brand-primary-soft); }
+
+.timeline-content-card {
+    background: var(--saas-surface);
+    border: 1px solid var(--saas-border);
+    border-radius: var(--radius-md);
+    padding: 16px 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 16px;
+    transition: var(--transition-smooth);
+}
+.timeline-content-card:hover { border-color: var(--saas-border-hover); background: #FAF9FF; }
+
+.timeline-text-area h5 { font-size: 0.9rem; font-weight: 700; color: var(--text-heading); margin-bottom: 4px; }
+.timeline-text-area p { font-size: 0.875rem; color: var(--text-body); line-height: 1.5; margin: 0; }
+
+/* Industrial Kanban Elements */
+.saas-kanban {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 20px;
+}
+@media (max-width: 992px) { .saas-kanban { grid-template-columns: 1fr; } }
+
+.kanban-col {
+    background: #F1F5F9;
+    border-radius: var(--radius-md);
+    padding: 16px;
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+    min-height: 450px;
+}
+
+.kanban-col-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 4px 4px;
+}
+.col-identity { display: flex; align-items: center; gap: 8px; font-size: 0.85rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.04em; color: var(--text-heading); }
+.col-dot { width: 8px; height: 8px; border-radius: 50%; display: inline-block; }
+.col-dot.todo { background: var(--color-todo); }
+.col-dot.doing { background: var(--color-doing); }
+.col-dot.done { background: var(--color-done); }
+.col-counter { font-size: 0.75rem; background: rgba(15, 23, 42, 0.06); padding: 2px 8px; border-radius: 20px; font-weight: 600; color: var(--text-muted); }
+
+.kanban-task-card {
+    background: var(--saas-surface);
+    border: 1px solid var(--saas-border);
+    border-radius: var(--radius-md);
+    padding: 16px;
+    box-shadow: var(--shadow-sm);
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+    transition: var(--transition-smooth);
+}
+.kanban-task-card:hover { transform: translateY(-2px); box-shadow: var(--shadow-md); border-color: var(--saas-border-hover); }
+
+.task-title { font-size: 0.875rem; font-weight: 600; color: var(--text-heading); line-height: 1.45; }
+.task-actions-row { display: flex; justify-content: flex-end; gap: 6px; border-top: 1px dashed var(--saas-border); padding-top: 12px; margin-top: 2px; }
+
+/* Slide-over Form Overlay System */
+.saas-slidebar {
+    position: fixed;
+    top: 0; right: -460px; bottom: 0;
+    width: 450px; max-width: 100vw;
+    background: var(--saas-surface);
+    box-shadow: -10px 0 30px rgba(15, 23, 42, 0.15);
+    z-index: 1050;
+    transition: right 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    display: flex;
+    flex-direction: column;
+    border-left: 1px solid var(--saas-border);
+}
+.saas-slidebar.open { right: 0; }
+
+.slidebar-header {
+    padding: 24px;
+    border-bottom: 1px solid var(--saas-border);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+.slidebar-header h3 { font-size: 1.1rem; font-weight: 700; color: var(--text-heading); margin: 0; }
+.slidebar-body { padding: 24px; flex-grow: 1; overflow-y: auto; display: flex; flex-direction: column; gap: 20px; }
+
+/* Form Controls Customization */
+.saas-form-group { display: flex; flex-direction: column; gap: 6px; }
+.saas-form-group label { font-size: 0.75rem; font-weight: 700; color: var(--text-body); margin: 0; }
+.saas-form-control {
+    width: 100%;
+    padding: 10px 14px;
+    font-size: 0.875rem;
+    border: 1px solid var(--saas-border);
+    border-radius: var(--radius-sm);
+    background: var(--saas-surface);
+    color: var(--text-heading);
+    font-family: inherit;
+    transition: var(--transition-smooth);
+}
+.saas-form-control:focus { outline: none; border-color: var(--brand-primary); box-shadow: 0 0 0 3px var(--brand-primary-soft); }
+
+.slidebar-overlay {
+    position: fixed; 
+    inset: 0; 
+    background: rgba(15, 23, 42, 0.3); 
+    -webkit-backdrop-filter: blur(4px); 
+    backdrop-filter: blur(4px); 
+    z-index: 1040;
+    opacity: 0; 
+    pointer-events: none; 
+    transition: var(--transition-smooth);
+}
+.slidebar-overlay.open { 
+    opacity: 1; 
+    pointer-events: auto; 
+}
+.empty-illustration-text { font-size: 0.85rem; color: var(--text-muted); text-align: center; padding: 12px 0; margin: 0; }
+.hidden-element { display: none !important; }
